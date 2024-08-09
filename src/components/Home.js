@@ -6,7 +6,7 @@ import Layout from './Layout';
 const Home = () => {
   return (
     <Layout>
-      <p>Olá Mundo do React e Webpack!</p>
+      <p>Olá Mundo do React e Webpack! Teste</p>
       <p>
         <Link to="/dynamic">Navegar para a Página Dinâmica</Link>
       </p>

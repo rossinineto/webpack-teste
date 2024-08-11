@@ -1,10 +1,22 @@
 import React from 'react';
-// import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
-import DynamicPage from './DynamicPage';
+import { imported } from 'react-imported-component';
 import Home from './Home';
-import NoMatch from './NoMatch';
+import Loading from './Loading';
+
+const AsyncDynamicPage = imported(
+  () => import(/* webpackChunkName:'DynamicPage' */ './DynamicPage'),
+  {
+    LoadingComponent: Loading
+  }
+);
+const AsyncNoMatch = imported(
+  () => import(/* webpackChunkName:'NoMatch' */ './NoMatch'),
+  {
+    LoadingComponent: Loading
+  }
+);
 
 const App = () => {
   return (
@@ -12,8 +24,8 @@ const App = () => {
       <div>
         <Routes>
           <Route exact path="/" element={<Home/>} />
-          <Route exact path="/dynamic" element={<DynamicPage/>} />
-          <Route element={<NoMatch/>} />
+          <Route exact path="/dynamic" element={<AsyncDynamicPage/>} />
+          <Route path="*" element={<AsyncNoMatch/>} />
         </Routes>
       </div>
     </Router>

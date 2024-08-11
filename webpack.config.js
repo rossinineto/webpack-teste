@@ -11,7 +11,7 @@ module.exports = {
     mode: 'development',
     entry: './src/index.js',
     output: {
-        filename: 'bundle.[fullhash].js',
+        filename: '[name].[fullhash].js',
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/'
     },
@@ -57,7 +57,7 @@ module.exports = {
         },
         port: port,
         historyApiFallback: true,
-        open: true
+        // open: true
     },
     resolve: {
         extensions: ['.js', '.jsx'],

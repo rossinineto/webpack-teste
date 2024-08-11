@@ -1,3 +1,4 @@
+const commonPaths = require('./common-paths');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
@@ -7,23 +8,14 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
     mode: 'production',
     entry: {
-        vendor: ['semantic-ui-react'],
-        app: './src/index.js'
+        app: [`${commonPaths.appEntry}/index.js`]
     },
     output: {
-        filename: 'static/[name].[fullhash].js',
-        path: path.resolve(__dirname, 'dist'),
-        publicPath: '/'
+        filename: 'static/[name].[fullhash].js'
     },
     devtool: 'source-map',
     module: {
         rules: [
-            // Primeira regra
-            {
-                test: /\.(js)$/,
-                exclude: /node_modules/,
-                use: ['babel-loader']
-            },
             // Segunda regra
             {
                 test: /\.css$/,
@@ -51,34 +43,11 @@ module.exports = {
         ]
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            template: 'public/index.html',
-            // favicon: 'public/favicon.ico'
-        }),
-        new webpack.HotModuleReplacementPlugin(),
         new MiniCssExtractPlugin({
             filename: 'styles/styles.[hash].css'
         })
-    ],
-    resolve: {
-        extensions: ['.js', '.jsx'],
-    },
-    optimization: {
-        splitChunks: {
-            cacheGroups: {
-                styles: {
-                    name: 'styles',
-                    test: /\.css$/,
-                    chunks: 'all',
-                    enforce: true
-                },
-                vendor: {
-                    chunks: 'initial',
-                    test: 'vendor',
-                    name: 'vendor',
-                    enforce: true
-                }
-            }
-        }
-    },
+    ]
+    // resolve: {
+    //     extensions: ['.js', '.jsx'],
+    // },
 };

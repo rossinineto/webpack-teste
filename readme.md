@@ -1,11 +1,17 @@
 ## Tutorial
 [Freecodecamp](https://www.freecodecamp.org/portuguese/news/como-usar-o-webpack-com-o-react-um-tutorial-detalhado/)
 
-## Local Server para HTTP Server de index.html em dist
+## Tutoriais e materiais acessórios
+
+[Setup the webpack config](https://www.taniarascia.com/how-to-use-webpack/)  
+[Boilerplate de webpack](https://github.com/taniarascia/webpack-boilerplate/)  
+[Complete Setup of webpack file config](https://webpack.js.org/configuration/)  
+
+## Local Server for HTTP Server by index.html in dist folder
 
 `node server.js`
 
-## Detalhe sobre o hot reload
+## Details about hot reload
 
 As of React 18, the recommended way to implement hot reloading is by using react-refresh, which works with the ReactDOM.createRoot API and is officially supported by the React team.
 
